@@ -30,13 +30,13 @@ export class TableService {
   }
 
   async findOne(@Param() id:string): Promise<Table>{
-    return this.findById(id)
+    return this.findById(id);
   }
 
   async update(id: string, dto: UpdateTableDto):Promise<Table> {
     await this.findById(id) //só serve para fazer a validação de id válido.
     const data: Partial<Table> = {...dto};
-    return this.prisma.table.update({data, where:{id}});
+    return this.prisma.table.update({data, where:{id}}).catch(handleError);
   }
 
   async remove(id: string):Promise<Table> {

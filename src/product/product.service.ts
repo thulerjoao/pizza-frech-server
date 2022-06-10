@@ -34,7 +34,7 @@ export class ProductService {
   async update(id: string, dto: UpdateProductDto) {
     await this.findbyId(id)
     const data: Partial<Product> = {...dto};
-    return this.prisma.product.update({data, where:{id}});
+    return this.prisma.product.update({data, where:{id}}).catch(handleError);
   }
 
   async remove(id: string) {
