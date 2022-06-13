@@ -17,6 +17,6 @@ export class AuthController {
   }
   )
   Login(@Body() dto: LoginDto): Promise<LoginResponsDto>{
-    return this.authService.login(LoginDto);
+    return this.authService.login(dto);
   }
 }
